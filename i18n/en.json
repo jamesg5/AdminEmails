@@ -1,0 +1,10 @@
+{
+    "@metadata": {
+        "authors": [
+            "jamesg5"
+        ]
+    },
+    "adminemails": "Admin Emails",
+    "adminemails-desc": "Displays all wiki admins, along with thier emails. Also a way to email all of the admins together.",
+    "adminemails-summary": "Displays wiki admin names and emails."
+}

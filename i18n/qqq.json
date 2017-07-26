@@ -1,0 +1,10 @@
+{
+    "@metadata": {
+        "authors": [
+            "jamesg5"
+        ]
+    },
+    "adminemails": "Admin Emails",
+    "adminemails-desc": "{{desc}}",
+    "adminemails-summary": "Admin emails and names."
+}
