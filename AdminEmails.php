@@ -1,6 +1,6 @@
 <?php
 
-class AdminEmails extends SpecialPage {
+class SpecialAdminEmails extends SpecialPage {
         function __construct() {
                 parent::__construct( 'AdminEmails' );
         }
