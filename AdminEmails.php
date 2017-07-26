@@ -1,6 +1,6 @@
 <?php
 
-class SpecialTestExtension1 extends SpecialPage {
+class AdminEmails extends SpecialPage {
         function __construct() {
                 parent::__construct( 'AdminEmails' );
         }
