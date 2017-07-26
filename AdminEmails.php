@@ -22,7 +22,7 @@ class SpecialAdminEmails extends SpecialPage {
                 );
 
                 global $wgSitename;
-                $output->addWikiText("'''These are the admins for the " . $wgSitename . " wiki.'''");
+                $output->addWikiText("'''These are the admins for the " . $wgSitename . ":'''");
 
                 $allEmail = '';
                 while( $row = $res->fetchRow() ){
