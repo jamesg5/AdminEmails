@@ -7,7 +7,7 @@
         "descriptionmsg": "AdminEmails-desc",
         "type": "other",
         "AutoloadClasses": {
-                "SpecialAdminEmails": "SpecialAdminEmails_body.php"
+                "SpecialAdminEmails": "AdminEmails.php"
         },
         "SpecialPages": {
                 "AdminEmails": "SpecialAdminEmails"
