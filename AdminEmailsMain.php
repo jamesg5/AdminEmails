@@ -40,7 +40,7 @@ class SpecialAdminEmails extends SpecialPage {
                 foreach( $res->result as $row ) {
                         $output->addWikiText(" |- \n |[[User:$row[user_name]|$row[user_name]]] \n |{{#if:$row[user_real_name] | [[$row[user_real_name]]]| }} \n |{{#if:$row[user_email] | ");
                         $output->addHTML("<a href='mailto:$row[user_email]' target='_self'>send email</a>");
-                        output->addWikiText(" | }} \n");
+                        $output->addWikiText(" | }} \n");
                 }
                 $output->addHTML("|}");
         }
