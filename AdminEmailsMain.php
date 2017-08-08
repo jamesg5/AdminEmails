@@ -21,7 +21,8 @@ class SpecialAdminEmails extends SpecialPage {
                         array(),
                         array( 'user_groups' => array( 'JOIN', array( 'ug_user=user_id' )))
                 );
-
+		
+		$output->addHTML("__NOHEADER__\n__NOFOOTER__\n__NONSHEADER__\n__NONSFOOTER__");
                 global $wgSitename;
                 $output->addWikiText("'''Admin information for the " . $wgSitename . ":'''");
 
