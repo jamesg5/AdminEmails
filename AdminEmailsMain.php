@@ -38,7 +38,6 @@ class SpecialAdminEmails extends SpecialPage {
                 }
                 $bodyText .= "|}";
                 $output = $bodyText;
-                return array($output, 'noparse' => true, 'isHTML' => true );
-                #$output->addWikiText($bodyText);
+                $output->addPrimaryWikiText($bodyText);
         }
 }
