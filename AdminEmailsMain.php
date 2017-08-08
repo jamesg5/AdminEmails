@@ -21,7 +21,8 @@ class SpecialAdminEmails extends SpecialPage {
                         array(),
                         array( 'user_groups' => array( 'JOIN', array( 'ug_user=user_id' )))
                 );
-
+		
+		$output->addWikiText("__NOHEADER__\n__NOFOOTER__\n__NONSHEADER__\n__NONSFOOTER__");
                 global $wgSitename;
                 $output->addWikiText("'''Admin information for the " . $wgSitename . ":'''");
 
@@ -31,11 +32,19 @@ class SpecialAdminEmails extends SpecialPage {
                         #var_dump($row);
                 }
 
-                $bodyText="{|class='wikitable' \n!colspan='3' |[mailto:$allEmail Email All Admins] \n|- \n!User Name \n!Real Name \n!Email \n";
+                #$bodyText="{|class='wikitable' \n!colspan='3' |[mailto:$allEmail Email All Admins] \n|- \n!User Name \n!Real Name \n!Email \n";
+                $output->addHTML("<table class='wikitable'><tr><th colspan='3' style='text-align:center;'><a href='mailto:$allEmail' target='_self'>Email All Admins</a></th></tr><tr><th>User Name</th><th>Real Name</th><th>Email</th></tr>");
                 foreach( $res->result as $row ) {
-                        $bodyText .= " |- \n |[[User:$row[user_name]|$row[user_name]]] \n |{{#if:$row[user_real_name] | [[$row[user_real_name]]]| }} \n |{{#if:$row[user_email] | [mailto:$row[user_email] send email] | }} \n";
+                        $output->addHTML("<tr><td height='18'>");
+                        $output->addWikiText("[[User:$row[user_name]|$row[user_name]]]");
+                        $output->addHTML("</td><td height='18' padding='0'>");
+                        $output->addWikiText("{{#if:$row[user_real_name] | [[$row[user_real_name]]]| }}");
+                        $output->addHTML("</td><td height='18'>");
+						if (!empty($row[user_email])) {
+						    $output->addHTML("<a href='mailto:$row[user_email]' target='_self'>send email</a>");
+						}
+						$output->addHTML("</td></tr>");
                 }
-                $bodyText .= "|}";
-                $output->addWikiText($bodyText);
+                $output->addHTML("</table>");
         }
 }
