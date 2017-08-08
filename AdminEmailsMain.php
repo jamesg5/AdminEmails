@@ -9,6 +9,7 @@ class SpecialAdminEmails extends SpecialPage {
         function execute( $par ) {
                 $request = $this->getRequest();
                 $output = $this->getOutput();
+		$linkRenderer = $this->getLinkRenderer();
                 $this->setHeaders();
 
 
@@ -31,20 +32,20 @@ class SpecialAdminEmails extends SpecialPage {
                         $allEmail .= $row[user_email] . ';';
                 }
 
-		$body = "<table class='wikitable'><tr><th colspan='3' style='text-align:center;'><a href='mailto:$allEmail' target='_self'>Email All Admins</a></th></tr><tr><th>User Name</th><th>Real Name</th><th>Email</th></tr>";
+		$bodyText = "<table class='wikitable'><tr><th colspan='3' style='text-align:center;'><a href='mailto:$allEmail' target='_self'>Email All Admins</a></th></tr><tr><th>User Name</th><th>Real Name</th><th>Email</th></tr>";
 		foreach( $res->result as $row ) {
 			$userNameLink = $linkRenderer->makeLink( new TitleValue( NS_MAIN, User:$row[user_name] ) );
-			$body .= "<tr><td>$userNameLink</td><td>";
+			$bodyText .= "<tr><td>$userNameLink</td><td>";
 			if (!empty($row[user_real_name])) {
 				$personLink = $linkRenderer->makeLink( new TitleValue( NS_MAIN, $row[user_real_name] ) );
-				$body .= "$personLink</td><td>"
+				$bodyText .= "$personLink</td><td>"
 			}
 			if (!empty($row[user_email])) {
-				$body .= "<a href='mailto:$row[user_email]' target='_self'>send email</a>";
+				$bodyText .= "<a href='mailto:$row[user_email]' target='_self'>send email</a>";
 			}
-			$body .= "</td></tr>";
+			$bodyText .= "</td></tr>";
 		}
-		$body .= "</table>";
-		$output->addHTML($body);
+		$bodyText .= "</table>";
+		$output->addHTML($bodyText);
         }
 }
