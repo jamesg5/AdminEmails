@@ -35,9 +35,9 @@ class SpecialAdminEmails extends SpecialPage {
                 $output->addHTML("<table class='wikitable'><tr><th colspan='3' style='text-align:center;'><a href='mailto:$allEmail' target='_self'>Email All Admins</a></th></tr><tr><th>User Name</th><th>Real Name</th><th>Email</th></tr>");
                 foreach( $res->result as $row ) {
                         $output->addHTML("<tr><td>");
-                        $output->addWikiText("[[User:$row[user_name]|$row[user_name]]]");
+                        $output->parse("[[User:$row[user_name]|$row[user_name]]]");
                         $output->addHTML("</td><td>");
-                        $output->addWikiText("{{#if:$row[user_real_name] | [[$row[user_real_name]]]| }}");
+                        $output->parse("{{#if:$row[user_real_name] | [[$row[user_real_name]]]| }}");
                         $output->addHTML("</td><td>");
 						if (!empty($row[user_email])) {
 						    $output->addHTML("<a href='mailto:$row[user_email]' target='_self'>send email</a>");
