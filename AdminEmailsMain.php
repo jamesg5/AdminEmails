@@ -39,7 +39,7 @@ class SpecialAdminEmails extends SpecialPage {
                         $output->addHTML("</td><td>");
                         $output->addWikiText("{{#if:$row[user_real_name] | [[$row[user_real_name]]]| }}");
                         $output->addHTML("</td><td>");
-						if (isset($row[user_email])) {
+						if (!empty($row[user_email])) {
 						    $output->addHTML("<a href='mailto:$row[user_email]' target='_self'>send email</a>");
 						}
 						$output->addHTML("</td></tr>");
