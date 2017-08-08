@@ -29,22 +29,22 @@ class SpecialAdminEmails extends SpecialPage {
                 $allEmail = '';
                 while( $row = $res->fetchRow() ){
                         $allEmail .= $row[user_email] . ';';
-                        #var_dump($row);
                 }
 
-                #$bodyText="{|class='wikitable' \n!colspan='3' |[mailto:$allEmail Email All Admins] \n|- \n!User Name \n!Real Name \n!Email \n";
-                $output->addHTML("<table class='wikitable'><tr><th colspan='3' style='text-align:center;'><a href='mailto:$allEmail' target='_self'>Email All Admins</a></th></tr><tr><th>User Name</th><th>Real Name</th><th>Email</th></tr>");
+                $body = "<table class='wikitable'><tr><th colspan='3' style='text-align:center;'><a href='mailto:$allEmail' target='_self'>Email All Admins</a></th></tr><tr><th>User Name</th><th>Real Name</th><th>Email</th></tr>";
                 foreach( $res->result as $row ) {
-                        $output->addHTML("<tr><td height='18'>");
-                        $output->addWikiText("[[User:$row[user_name]|$row[user_name]]]");
-                        $output->addHTML("</td><td height='18' padding='0'>");
-                        $output->addWikiText("{{#if:$row[user_real_name] | [[$row[user_real_name]]]| }}");
-                        $output->addHTML("</td><td height='18'>");
-						if (!empty($row[user_email])) {
-						    $output->addHTML("<a href='mailto:$row[user_email]' target='_self'>send email</a>");
-						}
-						$output->addHTML("</td></tr>");
+                	$userNameLink = $linkRenderer->makeLink( new TitleValue( NS_MAIN, User:$row[user_name] ) );
+                	$body .= "<tr><td>$userNameLink</td><td>";
+                	if (!empty($row[user_real_name])) {
+                		$personLink = $linkRenderer->makeLink( new TitleValue( NS_MAIN, $row[user_real_name] ) );
+						$body .= "$personLink</td><td>"
+					}
+					if (!empty($row[user_email])) {
+					    $output->addHTML("<a href='mailto:$row[user_email]' target='_self'>send email</a>");
+					}
+					$body .= "</td></tr>";
                 }
-                $output->addHTML("</table>");
+                $body .= "</table>";
+                $output->addHTML($body);
         }
 }
