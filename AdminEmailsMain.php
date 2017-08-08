@@ -41,7 +41,7 @@ class SpecialAdminEmails extends SpecialPage {
 			}
 			
 			if (!empty($row[user_email])) {
-				$output->addHTML("<a href='mailto:$row[user_email]' target='_self'>send email</a>");
+				$body .= "<a href='mailto:$row[user_email]' target='_self'>send email</a>";
 			}
 			$body .= "</td></tr>";
 		}
