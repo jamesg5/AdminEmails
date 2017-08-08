@@ -33,10 +33,10 @@ class SpecialAdminEmails extends SpecialPage {
 		$bodyText = '';
 		$bodyText = "<table class='wikitable'><tr><th colspan='3' style='text-align:center;'><a href='mailto:$allEmail' target='_self'>Email All Admins</a></th></tr><tr><th>User Name</th><th>Real Name</th><th>Email</th></tr>";
 		foreach( $res->result as $row ) {
-			$userNameLink = $linkRenderer->makeLink( new TitleValue( NS_MAIN, User:$row[user_name] ) );
+			$userNameLink = $linkRenderer->makeLink( new TitleValue( NS_MAIN, "User:$row[user_name]" ) );
 			$bodyText .= "<tr><td>$userNameLink</td><td>";
 			if (!empty($row[user_real_name])) {
-				$personLink = $linkRenderer->makeLink( new TitleValue( NS_MAIN, $row[user_real_name] ) );
+				$personLink = $linkRenderer->makeLink( new TitleValue( NS_MAIN, "$row[user_real_name]" ) );
 				$bodyText .= "$personLink</td><td>"
 			}
 			if (!empty($row[user_email])) {
