@@ -32,11 +32,16 @@ class SpecialAdminEmails extends SpecialPage {
                 }
 
                 #$bodyText="{|class='wikitable' \n!colspan='3' |[mailto:$allEmail Email All Admins] \n|- \n!User Name \n!Real Name \n!Email \n";
-                $bodyText="{|class='wikitable' \n!colspan='3' |<a href='mailto:$allEmail' target='_self'>Email All Admins</a> \n|- \n!User Name \n!Real Name \n!Email \n";
+                $output->addWikiText("{|class='wikitable' \n!colspan='3' |");
+                $output->addHTML("<a href='mailto:$allEmail' target='_self'>Email All Admins</a>");
+                $output->addWikiText("\n|- \n!User Name \n!Real Name \n!Email \n");
+
+
                 foreach( $res->result as $row ) {
-                        $bodyText .= " |- \n |[[User:$row[user_name]|$row[user_name]]] \n |{{#if:$row[user_real_name] | [[$row[user_real_name]]]| }} \n |{{#if:$row[user_email] | [mailto:$row[user_email] send email] | }} \n";
+                        $output->addWikiText(" |- \n |[[User:$row[user_name]|$row[user_name]]] \n |{{#if:$row[user_real_name] | [[$row[user_real_name]]]| }} \n |{{#if:$row[user_email] | ");
+                        $output->addHTML("<a href='mailto:$row[user_email]' target='_self'>send email</a>");
+                        output->addWikiText(" | }} \n");
                 }
-                $bodyText .= "|}";
-                $output->addHTML($bodyText);
+                $output->addHTML("|}");
         }
 }
