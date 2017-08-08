@@ -37,7 +37,8 @@ class SpecialAdminEmails extends SpecialPage {
                         $bodyText .= " |- \n |[[User:$row[user_name]|$row[user_name]]] \n |{{#if:$row[user_real_name] | [[$row[user_real_name]]]| }} \n |{{#if:$row[user_email] | [mailto:$row[user_email] send email] | }} \n";
                 }
                 $bodyText .= "|}";
-                return array($bodyText, 'noparse' => true, 'isHTML' => true );
+                $output => $bodyText;
+                return array($output, 'noparse' => true, 'isHTML' => true );
                 #$output->addWikiText($bodyText);
         }
 }
