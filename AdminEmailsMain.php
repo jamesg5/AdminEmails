@@ -29,10 +29,8 @@ class SpecialAdminEmails extends SpecialPage {
                 $allEmail = '';
                 while( $row = $res->fetchRow() ){
                         $allEmail .= $row[user_email] . ';';
-                        #var_dump($row);
                 }
 
-                #$bodyText="{|class='wikitable' \n!colspan='3' |[mailto:$allEmail Email All Admins] \n|- \n!User Name \n!Real Name \n!Email \n";
                 $output->addHTML("<table class='wikitable'><tr><th colspan='3' style='text-align:center;'><a href='mailto:$allEmail' target='_self'>Email All Admins</a></th></tr><tr><th>User Name</th><th>Real Name</th><th>Email</th></tr>");
                 foreach( $res->result as $row ) {
                         $output->addHTML("<tr><td height='18'>");
