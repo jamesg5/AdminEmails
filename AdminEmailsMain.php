@@ -37,7 +37,7 @@ class SpecialAdminEmails extends SpecialPage {
                 foreach( $res->result as $row ) {
                         $output->addHTML("<tr><td height='18'>");
                         $output->addWikiText("[[User:$row[user_name]|$row[user_name]]]");
-                        $output->addHTML("</td><td height='18'>");
+                        $output->addHTML("</td><td height='18' padding='0'>");
                         $output->addWikiText("{{#if:$row[user_real_name] | [[$row[user_real_name]]]| }}");
                         $output->addHTML("</td><td height='18'>");
 						if (!empty($row[user_email])) {
