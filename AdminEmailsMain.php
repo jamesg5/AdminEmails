@@ -42,6 +42,6 @@ class SpecialAdminEmails extends SpecialPage {
                         $output->addHTML("<a href='mailto:$row[user_email]' target='_self'>send email</a>");
                         $output->addWikiText(" | }} \n");
                 }
-                $output->addHTML("|}");
+                $output->addWikiText("|}");
         }
 }
