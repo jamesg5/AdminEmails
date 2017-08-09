@@ -22,7 +22,6 @@ class SpecialAdminEmails extends SpecialPage {
                         array( 'user_groups' => array( 'JOIN', array( 'ug_user=user_id' )))
                 );
 		
-		$output->addWikiText("__NOHEADER__\n__NOFOOTER__\n__NONSHEADER__\n__NONSFOOTER__");
                 global $wgSitename;
                 $output->addWikiText("'''Admin information for the " . $wgSitename . ":'''");
 
@@ -34,7 +33,7 @@ class SpecialAdminEmails extends SpecialPage {
                 $output->addHTML("<table class='wikitable'><tr><th colspan='3' style='text-align:center;'><a href='mailto:$allEmail' target='_self'>Email All Admins</a></th></tr><tr><th>User Name</th><th>Real Name</th><th>Email</th></tr>");
                 foreach( $res->result as $row ) {
                         $output->addHTML("<tr><td>");
-                        $output->addWikiText("[[User:$row[user_name]|$row[user_name]]]");
+                        $output->addHTML(\Linker::link(\Title::makeTitle( 2, $row[user_name] )));
                         $output->addHTML("</td><td height='18' padding='0'>");
                         $output->addWikiText("{{#if:$row[user_real_name] | [[$row[user_real_name]]]| }}");
                         $output->addHTML("</td><td height='18'>");
