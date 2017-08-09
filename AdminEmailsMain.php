@@ -34,7 +34,7 @@ class SpecialAdminEmails extends SpecialPage {
                 foreach( $res->result as $row ) {
                         $output->addHTML("<tr><td>" . Linker::link(Title::makeTitle( 2, $row[user_name] ), $row[user_name]) . "</td><td height='18' padding='0'>");
 			if (!empty($row[user_real_name])) {
-			    $output->addHTML(Linker::link(Title::makeTitle( 0, $row[user_real_name] ), $row[user_name]));
+			    $output->addHTML(Linker::link(Title::makeTitle(0, $row[user_real_name])));
 			}
                         $output->addHTML("</td><td height='18'>");
 			if (!empty($row[user_email])) {
