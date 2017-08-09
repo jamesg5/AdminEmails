@@ -34,11 +34,11 @@ class SpecialAdminEmails extends SpecialPage {
 
                 $output->addHTML("<table class='wikitable'><tr><th colspan='3' style='text-align:center;'><a href='mailto:$allEmail' target='_self'>Email All Admins</a></th></tr><tr><th>User Name</th><th>Real Name</th><th>Email</th></tr>");
                 foreach( $res->result as $row ) {
-                        $output->addHTML("<tr><td>" . Linker::link(Title::makeTitle( 2, $row[user_name] ), $row[user_name]) . "</td><td height='18' padding='0'>");
+                        $output->addHTML("<tr><td>" . Linker::link(Title::makeTitle( 2, $row[user_name] ), $row[user_name]) . "</td><td>");
 			if (!empty($row[user_real_name])) {
 				$output->addHTML(Linker::link(Title::makeTitle(0, $row[user_real_name])));
 			}
-                        $output->addHTML("</td><td height='18'>");
+                        $output->addHTML("</td><td>");
 			if (!empty($row[user_email])) {
 				$output->addHTML("<a href='mailto:$row[user_email]' target='_self'>send email</a>");
 			}
