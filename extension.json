@@ -9,6 +9,9 @@
         "AutoloadClasses": {
                 "SpecialAdminEmails": "AdminEmailsMain.php"
         },
+	"config": {
+		"AdminEmailsShowRealName": true
+	},
         "SpecialPages": {
                 "AdminEmails": "SpecialAdminEmails"
         },
