@@ -10,7 +10,7 @@
                 "SpecialAdminEmails": "AdminEmailsMain.php"
         },
 	"config": {
-		"AdminEmailsShowRealName": true
+		"AdminEmailsShowRealName": false
 	},
         "SpecialPages": {
                 "AdminEmails": "SpecialAdminEmails"
