@@ -44,7 +44,7 @@ class SpecialAdminEmails extends SpecialPage {
 			}
 			if($wgAdminEmailsShowRealName){$output->addHTML("</td><td>");}
 			if (!empty($row[user_email])) {
-				$output->addHTML("<a href='mailto:$row[user_email]' target='_self'>send email</a>");
+				$output->addHTML("<a href='mailto:$row[user_email]' target='_self'>$row[user_email]</a>");
 			}
 			$output->addHTML("</td></tr>");
 		}
